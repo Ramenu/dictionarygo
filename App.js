@@ -1,20 +1,27 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import { Provider } from 'react-redux';
+import { InputBox } from './components/inputbox';
+import store from "./redux/store";
+import { useState } from 'react';
+import { APIButton } from './components/apibutton';
 
 export default function App() {
+  const [defaultText, setDefaultText] = useState("Search for something..");
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaView style={styles.container}>
+      <Provider store={store}>
+          <InputBox defaultText={defaultText}/>
+          <APIButton/>
+      </Provider>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-  },
+  }
 });
