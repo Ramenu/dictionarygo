@@ -4,10 +4,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { BLACK, DARK_GREY, LIGHT_GREY, WHITE } from "../redux/slices/themeslice";
 
 // APIButton component
-export const APIButton = () =>
+export const CustomButton = ({onPress, text}) =>
 {
     const theme = useSelector((state) => state.theme);
-    const dispatch = useDispatch();
 
     const animatedColorValue = useRef(new Animated.Value(theme.input)).current;
     Animated.timing(animatedColorValue, {toValue: theme.output, duration: theme.animationDuration, useNativeDriver: false}).start();
@@ -17,11 +16,10 @@ export const APIButton = () =>
         outputRange: [BLACK, WHITE]
     });
 
-    //const onPress = () => dispatch(fetchAPI());
     // Custom button
     return (
-        <TouchableOpacity style={[styles.button, {backgroundColor: theme.buttonColor}]}>
-            <Animated.Text style={[styles.text, {color: color}]}>SUBMIT</Animated.Text>
+        <TouchableOpacity style={[styles.button, {backgroundColor: theme.buttonColor}]} onPress={onPress}>
+            <Animated.Text style={[styles.text, {color: color}]}>{text}</Animated.Text>
         </TouchableOpacity>
     );
 }

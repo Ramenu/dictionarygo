@@ -1,14 +1,9 @@
-import { useRef } from "react";
-import { Animated, SafeAreaView, StyleSheet } from "react-native";
+import { Animated, StyleSheet } from "react-native";
 import { useSelector } from "react-redux";
-import { BLACK, WHITE } from "../redux/slices/themeslice";
-import { APIButton } from "./apibutton";
-import { InputBox } from "./inputbox";
-import { Title } from "./title";
-import { TopBar } from "./topbar";
+import { useRef } from "react";
+import { WHITE, BLACK } from "../redux/slices/themeslice";
 
-
-export const Entry = () =>
+export const CustomView = ({children}) =>
 {
     const theme = useSelector((state) => state.theme);
 
@@ -23,14 +18,8 @@ export const Entry = () =>
       outputRange: [WHITE, BLACK]
     });
 
-    return (
-        <Animated.View style={[styles.container, {backgroundColor: color}]}>
-            <TopBar/>
-            <Title title="Dictionary GO"/>
-            <InputBox defaultText="Search for something.."/>
-            <APIButton/>
-        </Animated.View>
-    );
+    return <Animated.View style={[styles.container, {backgroundColor: color}]}>{children}</Animated.View>;
+
 }
 
 const styles = StyleSheet.create({

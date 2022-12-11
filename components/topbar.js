@@ -8,7 +8,6 @@ export const TopBar = () =>
     const theme = useSelector((state) => state.theme);
     const Press = () => dispatch(changeTheme());
 
-
     return (
         <View style={styles.container}>
             <TouchableHighlight style={styles.button} underlayColor={theme.underlayColor} onPress={Press}>
