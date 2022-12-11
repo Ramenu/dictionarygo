@@ -1,15 +1,19 @@
-import { SafeAreaView, TextInput, StyleSheet } from "react-native";
+import { useRef } from "react";
+import { SafeAreaView, TextInput, StyleSheet, Animated } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { EMPTY_FIELD } from "../redux/actionTypes";
 import { setWordToSearch } from "../redux/slices/dictionaryslice";
+import { DARK_GREY, LIGHT_GREY } from "../redux/slices/themeslice";
+
 
 export const InputBox = ({defaultText}) =>
 {
     const dispatch = useDispatch();
     const word = useSelector((state) => state.dictionary.wordToSearch);
-    console.log(word);
+    const theme = useSelector((state) => state.theme);
+
     return (
-        <TextInput style={styles.input} 
+        <TextInput style={[styles.input, {backgroundColor: theme.textInputColor, color: theme.textColor}]} 
                    defaultValue={defaultText} 
                    value={word} 
                    onChangeText={(text) => dispatch(setWordToSearch(text))}
@@ -18,13 +22,7 @@ export const InputBox = ({defaultText}) =>
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
     input: {
-        backgroundColor: '#E2DEDE',
         borderRadius: 25,
         width: "50%",
         height: "5%",

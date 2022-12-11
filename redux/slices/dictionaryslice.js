@@ -11,11 +11,12 @@ export const dictionarySlice = createSlice({
         setWordToSearch: (state, action) => {
             return {...state, wordToSearch: action.payload};
         },
-        fetchAPI: async (state, action) => {
-            if (action.type === FETCH_WORD_FROM_DICTIONARY) {
-                const api = `https://api.dictionaryapi.dev/api/v2/entries/en/${wordToSearch}`;
-                await fetch(api).then((resp) => resp.json()).then((j) => {json = j[0];});
-            }
+        fetchAPI: (state, action) => {
+            let result = {};
+            const api = `https://api.dictionaryapi.dev/api/v2/entries/en/${wordToSearch}`;
+            fetch(api).then((resp) => resp.json()).then((j) => {result = j[0];});
+            console.log(result);
+            return {...state, json: result};
         }
     }
 });
