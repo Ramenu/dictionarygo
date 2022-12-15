@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { Animated, FlatList, StyleSheet, View } from "react-native";
+import { Animated, FlatList, Modal, StyleSheet, View } from "react-native";
 import { useSelector } from "react-redux";
+import { CustomButton } from "./custombutton";
 import { CustomText } from "./customtext";
 import { CustomView } from "./customview";
 import { Title } from "./title";
@@ -47,12 +48,18 @@ const renderItem = ({item}) =>
 
 export const Dictionary = ({route, navigation}) =>
 {
+    const [showModal, setShowModal] = useState(true);
     const data = useSelector((state) => state.dictionary.data);
     if (data.message === "Sorry pal, we couldn't find definitions for the word you were looking for.") {
         return (
             <CustomView>
-                <TopBar/>
-                <Title title={`Couldn't find definitions for ${route.params.title}`}/>
+                <Modal animationType="slide" transparent={false} visible={showModal} onRequestClose={() => setShowModal(false)}>
+                    <CustomText>Couldn't find definitions for {route.params.title}</CustomText>
+                    <CustomButton text="OK" onPress={() => {
+                        setShowModal(false);
+                        navigation.navigate("Search", {title: "Dictionary Go"});
+                    }}/>
+                </Modal>
             </CustomView>
         );
     }

@@ -9,14 +9,6 @@ export const CustomButton = ({onPress, text}) =>
 {
     const theme = useSelector((state) => state.theme);
 
-    const animatedColorValue = useRef(new Animated.Value(theme.input)).current;
-    Animated.timing(animatedColorValue, {toValue: theme.output, duration: theme.animationDuration, useNativeDriver: false}).start();
-
-    const color = animatedColorValue.interpolate({
-        inputRange: [0, 255],
-        outputRange: [BLACK, WHITE]
-    });
-
     // Custom button
     return (
         <TouchableOpacity style={[styles.button, {backgroundColor: theme.buttonColor}]} onPress={onPress}>
@@ -33,6 +25,7 @@ const styles = StyleSheet.create({
         overflow: "hidden",
         backgroundColor: LIGHT_GREY,
         width: "20%",
-        textAlign: "center"
+        textAlign: "center",
+        alignSelf: "center"
     }
 });
