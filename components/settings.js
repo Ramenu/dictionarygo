@@ -1,13 +1,11 @@
+import { CustomButton } from "./custombutton";
 import { CustomView } from "./customview";
-import { TopBar } from "./topbar";
 import { Title } from "./title";
 
-
-export const About = ({route, navigation}) =>
+export const Settings = ({route, navigation}) =>
 {
     return (
         <CustomView>
-            <TopBar/>
             <Title title={route.params.title}/>
         </CustomView>
     );

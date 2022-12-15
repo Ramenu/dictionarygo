@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { useRef } from "react";
 import { WHITE, BLACK } from "../redux/slices/themeslice";
 
-export const CustomView = ({children}) =>
+export const CustomView = ({children, style}) =>
 {
     const theme = useSelector((state) => state.theme);
 
@@ -18,7 +18,7 @@ export const CustomView = ({children}) =>
       outputRange: [WHITE, BLACK]
     });
 
-    return <Animated.View style={[styles.container, {backgroundColor: color}]}>{children}</Animated.View>;
+    return <Animated.View style={[styles.container, {backgroundColor: color}, style]}>{children}</Animated.View>;
 
 }
 

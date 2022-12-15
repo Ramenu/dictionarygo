@@ -29,7 +29,8 @@ export const themeSlice = createSlice({
         // range is set to 255-0 because on the first render, it will animate from black to white
         input: 255, 
         output: 0,
-        animationDuration: 170 // 170ms (this is a constant and does not change)
+        animationDuration: 170, // 170ms (this is a constant and does not change)
+        slowAnimationDuration: 200 // For animations with slightly higher delay
     },
     reducers: {
         changeTheme: (state, action) => {

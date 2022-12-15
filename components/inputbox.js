@@ -2,7 +2,7 @@ import { useRef } from "react";
 import { SafeAreaView, TextInput, StyleSheet, Animated } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { EMPTY_FIELD } from "../redux/actionTypes";
-import { setWordToSearch } from "../redux/slices/dictionaryslice";
+import { setData, setWordToSearch } from "../redux/slices/dictionaryslice";
 import { DARK_GREY, LIGHT_GREY } from "../redux/slices/themeslice";
 
 
@@ -18,7 +18,7 @@ export const InputBox = ({defaultText}) =>
                    value={word} 
                    onChangeText={(text) => dispatch(setWordToSearch(text))}
                    onFocus={() => dispatch(setWordToSearch(""))}/>
-    );;
+    );
 }
 
 const styles = StyleSheet.create({

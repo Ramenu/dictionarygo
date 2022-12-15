@@ -1,9 +1,10 @@
 import { useRef } from "react";
-import { Button, StyleSheet, TouchableOpacity, Text, Animated } from "react-native";
+import { Button, StyleSheet, TouchableOpacity, Animated } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { BLACK, DARK_GREY, LIGHT_GREY, WHITE } from "../redux/slices/themeslice";
+import { CustomText } from "./customtext";
 
-// APIButton component
+// CustomButton component
 export const CustomButton = ({onPress, text}) =>
 {
     const theme = useSelector((state) => state.theme);
@@ -19,12 +20,12 @@ export const CustomButton = ({onPress, text}) =>
     // Custom button
     return (
         <TouchableOpacity style={[styles.button, {backgroundColor: theme.buttonColor}]} onPress={onPress}>
-            <Animated.Text style={[styles.text, {color: color}]}>{text}</Animated.Text>
+            <CustomText>{text}</CustomText>
         </TouchableOpacity>
     );
 }
 
-// Styles for our APIButton
+// Styles for our CustomButton
 const styles = StyleSheet.create({
     button: {
         marginTop: "5%",
@@ -33,10 +34,5 @@ const styles = StyleSheet.create({
         backgroundColor: LIGHT_GREY,
         width: "20%",
         textAlign: "center"
-    },
-    text: {
-        fontWeight: "bold",
-        textAlign: "center",
-        opacity: 0.85
     }
 });

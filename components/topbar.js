@@ -9,11 +9,9 @@ export const TopBar = () =>
     const Press = () => dispatch(changeTheme());
 
     return (
-        <View style={styles.container}>
             <TouchableHighlight style={styles.button} underlayColor={theme.underlayColor} onPress={Press}>
                 <Image style={styles.icon} source={theme.icon}/>
             </TouchableHighlight>
-        </View>
     );
 }
 
@@ -24,7 +22,11 @@ const styles = StyleSheet.create({
     },  
     button: {
         opacity: 0.75,
-        borderRadius: 20
+        borderRadius: 20,
+        alignSelf: "baseline",
+        position: 'absolute',
+        top: 10,
+        left: 5
     },
     icon: {
         width: 30,

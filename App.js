@@ -5,6 +5,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { Homepage } from './components/homepage';
 import { About } from './components/about';
+import { Settings } from './components/settings';
+import { Dictionary } from './components/dictionary';
 
 const Stack = createStackNavigator();
 
@@ -16,6 +18,8 @@ export default function App() {
           <Stack.Screen name="Homepage" component={Homepage}/>
           <Stack.Screen name="Search" component={Search}/>
           <Stack.Screen name="About" component={About}/>
+          <Stack.Screen name="Settings" component={Settings}/>
+          <Stack.Screen name="Dictionary" component={Dictionary}/>
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>
