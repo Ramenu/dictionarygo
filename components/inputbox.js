@@ -6,18 +6,22 @@ import { setData, setWordToSearch } from "../redux/slices/dictionaryslice";
 import { DARK_GREY, LIGHT_GREY } from "../redux/slices/themeslice";
 
 
-export const InputBox = ({defaultText}) =>
-{
+export const InputBox = (props) => {
     const dispatch = useDispatch();
     const word = useSelector((state) => state.dictionary.wordToSearch);
     const theme = useSelector((state) => state.theme);
 
     return (
-        <TextInput style={[styles.input, {backgroundColor: theme.textInputColor, color: theme.textColor}]} 
-                   defaultValue={defaultText} 
-                   value={word} 
-                   onChangeText={(text) => dispatch(setWordToSearch(text))}
-                   onFocus={() => dispatch(setWordToSearch(""))}/>
+        <TextInput style={[styles.input, { backgroundColor: theme.textInputColor, color: theme.textColor }]}
+            defaultValue={props.defaultText}
+            value={word}
+            onChangeText={(text) => dispatch(setWordToSearch(text))}
+            onFocus={() => {
+                dispatch(setWordToSearch(""));
+                if (props.hasOwnProperty('setProgress')) {
+                    props.setProgress(0);
+                }
+            }} />
     );
 }
 
