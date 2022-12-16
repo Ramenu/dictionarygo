@@ -5,13 +5,13 @@ import { BLACK, DARK_GREY, LIGHT_GREY, WHITE } from "../redux/slices/themeslice"
 import { CustomText } from "./customtext";
 
 // CustomButton component
-export const CustomButton = ({onPress, text}) =>
+export const CustomButton = ({onPress, text, style}) =>
 {
     const theme = useSelector((state) => state.theme);
 
     // Custom button
     return (
-        <TouchableOpacity style={[styles.button, {backgroundColor: theme.buttonColor}]} onPress={onPress}>
+        <TouchableOpacity style={[styles.button, {backgroundColor: theme.buttonColor}, style]} onPress={onPress}>
             <CustomText>{text}</CustomText>
         </TouchableOpacity>
     );
@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
         borderRadius: 2,
         overflow: "hidden",
         backgroundColor: LIGHT_GREY,
-        width: "20%",
+        width: "23%",
         textAlign: "center",
         alignSelf: "center"
     }

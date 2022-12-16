@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "finalproject",
-    "slug": "finalproject",
+    "name": "Dictionary GO",
+    "slug": "dictionary_go",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -22,12 +22,18 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.expo.deakins.dictionary_go"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "b34ce950-d619-493f-846c-c8ac1dc8fab8"
+      }
     }
   }
 }

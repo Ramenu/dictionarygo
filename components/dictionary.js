@@ -54,11 +54,13 @@ export const Dictionary = ({route, navigation}) =>
         return (
             <CustomView>
                 <Modal animationType="slide" transparent={false} visible={showModal} onRequestClose={() => setShowModal(false)}>
-                    <CustomText>Couldn't find definitions for {route.params.title}</CustomText>
-                    <CustomButton text="OK" onPress={() => {
-                        setShowModal(false);
-                        navigation.navigate("Search", {title: "Dictionary Go"});
-                    }}/>
+                    <CustomView>
+                        <CustomText>Couldn't find definitions for {route.params.title}</CustomText>
+                        <CustomButton text="OK" onPress={() => {
+                            setShowModal(false);
+                            navigation.navigate("Search", {title: "Dictionary Go"});
+                        }}/>
+                    </CustomView>
                 </Modal>
             </CustomView>
         );

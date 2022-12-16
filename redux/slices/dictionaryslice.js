@@ -5,7 +5,7 @@ export const dictionarySlice = createSlice({
     name: "dictionary",
     initialState: {
         wordToSearch: null,
-        data: {}
+        data: {},
     },
     reducers: {
         setWordToSearch: (state, action) => {

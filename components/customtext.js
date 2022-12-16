@@ -27,6 +27,7 @@ export const CustomText = ({children, style, useDifferentPalette}) =>
 
 const styles = StyleSheet.create({
     text: {
+        position: "relative",
         fontWeight: "bold",
         textAlign: "center",
         opacity: 0.85

@@ -7,6 +7,7 @@ import { Homepage } from './components/homepage';
 import { About } from './components/about';
 import { Settings } from './components/settings';
 import { Dictionary } from './components/dictionary';
+import { CoolJoke } from './components/cooljoke';
 
 const Stack = createStackNavigator();
 
@@ -20,6 +21,7 @@ export default function App() {
           <Stack.Screen name="About" component={About}/>
           <Stack.Screen name="Settings" component={Settings}/>
           <Stack.Screen name="Dictionary" component={Dictionary}/>
+          <Stack.Screen name="Cool Joke" component={CoolJoke}/>
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>

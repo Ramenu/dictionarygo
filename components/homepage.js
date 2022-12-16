@@ -15,6 +15,7 @@ export const Homepage = ({navigation}) =>
             <CustomButton text="SEARCH" onPress={() => navigation.navigate("Search", {title: "Dictionary Go"})}/>
             <CustomButton text="ABOUT" onPress={() => navigation.navigate("About", {title: "About"})}/>
             <CustomButton text="SETTINGS" onPress={() => navigation.navigate("Settings", {title: "Settings"})}/>
+            <CustomButton text="COOL JOKE" onPress={() => navigation.navigate("Cool Joke")}/>
         </CustomView>
     );
 }

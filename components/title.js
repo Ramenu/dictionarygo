@@ -36,8 +36,7 @@ export const Title = ({title, subTitle, style}) =>
 
 const styles = StyleSheet.create({
     container: {
-        position: "absolute",
-        top: "30%"
+        position: "relative",
     },
     title: {
         fontWeight: "bold",

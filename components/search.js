@@ -43,9 +43,11 @@ export const Search = ({ route, navigation }) => {
                     dispatch(setData(json));
 
                     //simulate loading progress bar
-                    setProgress(0);
                     setTimeout(() => { setProgress(1) }, 100);
-                    setTimeout(() => navigation.navigate("Dictionary", { title: word }), 750);
+                    setTimeout(() => {
+                        navigation.navigate("Dictionary", { title: word });
+                        setProgress(0);
+                    }, 200);
 
                     // In case retrieving the JSON fails, just use the backup
                 }).catch((err) => {
