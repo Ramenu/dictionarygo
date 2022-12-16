@@ -6,14 +6,17 @@ import { CustomView } from "./customview";
 import { TopBar } from "./topbar";
 import { useDispatch, useSelector } from "react-redux";
 import backupJson from "../backup.json";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { setData } from "../redux/slices/dictionaryslice";
+import { Bar } from 'react-native-progress';
 
 export const Search = ({route, navigation}) =>
 {
-
+    const [progress, setProgress] = useState(0);
     const word = useSelector((state) => state.dictionary.wordToSearch);
     const dispatch = useDispatch();
+
+    useEffect(()=>{setProgress(0)},[]);
 
     return (
         <CustomView>
@@ -25,6 +28,11 @@ export const Search = ({route, navigation}) =>
                 fetch(api).then((resp) => resp.json()).then((json) => {
                     // simulate loading
                     dispatch(setData(json));
+
+                    //simulate loading progress bar
+                    setProgress(0);
+                    setTimeout(() => {setProgress(1)}, 250);
+
                     setTimeout(() => navigation.navigate("Dictionary", {title: word}), 500);
                 // In case retrieving the JSON fails, just use the backup
                 }).catch((err) => {
@@ -38,6 +46,10 @@ export const Search = ({route, navigation}) =>
                     setTimeout(() => navigation.navigate("Dictionary", {title: word}), 500);
                 });
             }}/>
+            <View style={{margin:30}}>
+                <Bar progress={progress} color="grey"></Bar>
+            </View>
+            
         </CustomView>
     );
 }
